@@ -6,4 +6,6 @@ Disclaimer:- I have made this script only based on TERMUX (yes I am a termux hac
 
 Usage:-
 bash install.sh
+
+
 bash recon.sh hackerone.com
