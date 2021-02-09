@@ -30,7 +30,7 @@ rm -rf $1.txt subfinder.txt assetfinder.txt findomain.txt crt.txt amass.txt
 cat passive.txt | httprobe >> http.txt
 #starting nuclei scan.
 nuclei -update-templates
-#cat http.txt | nuclei -t /$HOME/nuclei-templates/ | tee nuclei.txt
+cat http.txt | nuclei -t /$HOME/nuclei-templates/ | tee nuclei.txt
 
 #getting all the available extensions.
 gau -subs $1 | egrep -i -E -o "\.{1}\w*$" | sort -su | tee ext
