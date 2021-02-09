@@ -1,3 +1,4 @@
+cd ~/
 apt install golang -y
 apt install git -y
 apt install python -y
