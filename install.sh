@@ -32,3 +32,4 @@ go get -u github.com/tomnomnom/qsreplace
 go get github.com/hakluke/hakcheckurl
 mkdir $HOME/recondata
 mv go/bin/* ~/../usr/bin
+pip3 install aiohttp
