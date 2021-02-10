@@ -10,6 +10,7 @@ go get -u -v github.com/tomnomnom/assetfinder
 GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
 GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
 GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
+go get -u github.com/tomnomnom/httprobe
 GO111MODULE=on go get -u -v github.com/lc/subjs
 apt install nmap -y
 go get github.com/tomnomnom/waybackurls
