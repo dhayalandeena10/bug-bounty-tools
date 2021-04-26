@@ -2,7 +2,7 @@ rm -rf /$HOME/recondata/$1
 mkdir /$HOME/recondata/$1
 cd /$HOME/recondata/$1
 subfinder -d $1 -all -o subfinder.txt
-assetfinder --subs-only $1 | sort -u > assetfinder.txt
+assetfinder --subs-only $1 | sort -u >> assetfinder.txt
 findomain --quiet -t $1 -u findomain.txt 
 #usingcrt.sh at defferent levels
 curl -s https://crt.sh/?Identity=%.$1 | grep ">*.$1" | sed 's/<[/]*[TB][DR]>/\n/g' | grep -vE "<|^[\*]*[\.]*$1" | sort -u | awk 'NF' > crt.txt
@@ -23,7 +23,7 @@ curl -s "https://jldc.me/anubis/subdomains/$1" | grep -Po "((http|https):\/\/)?(
 #using bufferover 
 curl -s https://dns.bufferover.run/dns?q=.$1 |jq -r .FDNS_A[] | sed -s 's/,/\n/g' |grep [a-z] >> $1.txt
 amass enum --passive -d $1 -o amass.txt
-cat $1.txt amass.txt subfinder.txt assetfinder.txt findomain.txt crt.txt | grep -F ".$1" | sed 's/\*\.//g' |sort -u > passive.txt 
+cat $1.txt amass.txt subfinder.txt assetfinder.txt findomain.txt crt.txt | grep -F ".$1" | sed 's/\*\.//g' |sort -u >> passive.txt 
 rm -rf $1.txt subfinder.txt assetfinder.txt findomain.txt crt.txt amass.txt
 
 #starting httprobe
