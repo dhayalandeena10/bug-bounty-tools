@@ -34,3 +34,7 @@ go get github.com/hakluke/hakcheckurl
 mkdir $HOME/recondata
 mv go/bin/* ~/../usr/bin
 pip3 install aiohttp
+wget https://github.com/Edu4rdSHL/findomain/releases/latest/download/findomain-linux
+mv findomain-linux findomain
+chmod 777 findomain 
+sudo mv findomain /usr/bin
