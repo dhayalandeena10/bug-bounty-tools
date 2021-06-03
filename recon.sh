@@ -27,9 +27,9 @@ curl -s "https://jldc.me/anubis/subdomains/$1" | grep -Po "((http|https):\/\/)?(
 #using bufferover 
 curl -s https://dns.bufferover.run/dns?q=.$1 |jq -r .FDNS_A[] | sed -s 's/,/\n/g' |grep [a-z] >> $1.txt
 amass enum --passive -d $1 -o amass.txt
-~/puredns/./puredns bruteforce ~/puredns/subdomains $1 -w $1
-cat $1.txt amass.txt subfinder.txt assetfinder.txt ~/puredns/$1 findomain.txt crt.txt | grep -F ".$1" | sed 's/\*\.//g' |sort -u >> passive.txt 
-rm $1.txt subfinder.txt assetfinder.txt ~/puredns/$1 findomain.txt crt.txt amass.txt
+puredns bruteforce ~/2m-subdomains.txt $1 -w $1
+cat $1.txt amass.txt subfinder.txt assetfinder.txt $1 findomain.txt crt.txt | grep -F ".$1" | sed 's/\*\.//g' |sort -u >> passive.txt 
+rm $1.txt subfinder.txt assetfinder.txt $1 findomain.txt crt.txt amass.txt
 
 #starting httprobe
 cat passive.txt | httprobe >> http.txt
