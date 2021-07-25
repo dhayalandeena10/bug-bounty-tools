@@ -46,8 +46,9 @@ naabu -iL passive.txt -rate 5000 -exclude-ports 80,443 -o ports
 #starting httprobe
 cat passive.txt ports| httprobe >> http.txt
 #starting nuclei scan.
+cat http.txt|nuclei -t ~/the-nuclei-templates/ |tee -a nuclei.txt
 nuclei -update-templates
-cat http.txt | nuclei -t /$HOME/nuclei-templates/ | tee nuclei.txt
+cat http.txt | nuclei -t /$HOME/nuclei-templates/ | tee -a nuclei.txt
 cat nuclei.txt | grep -i 'low' |notify
 cat nuclei.txt | grep -i 'medium' |notify
 cat nuclei.txt | grep -i 'high' |notify
