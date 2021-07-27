@@ -57,8 +57,10 @@ cat nuclei.txt | grep -i 'critical' |notify
 #starting subzy
 subzy -targets passive.txt -hide_fails | tee subvulns.txt
 echo "gau runnig..."
-cat http.txt |gau|sort -u|tee gau.txt
-cat gau|grep = |sort -u|kxss|tee kxss.txt
+cat passive.txt |gau|grep =|grep -v jpeg|sort -u|tee gau.txt
+cat passive.txt |waybackurls|tee waybackurls
+python3 ~/ParamSpider/paramspider.py --domain $1 --exclude woff,css,js,png,svg,php,jpg
+cat /output/$1.txt gau.txt waybackurls|grep = |sort -u|xss-scanner|tee xss.txt
 #cat passive.txt | while read hosts;do (bash ~/xssauto/QuickXSS.sh -d $hosts -b https://deena.xss.ht);done
 #cat http.txt |httpx -silent -follow-redirects -mc 200 |aquatone 
 #cat ~/xssauto/results/*/results.txt |notify
